@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Proud of you, cii</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      #ffd9e6,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      #d7efd9,
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #dff0df,
+      #ffe0ea
+    );
+
+  color: #405b49;
+}
+
+.card {
+  width: min(90%, 520px);
+  padding: 42px 30px;
+  text-align: center;
+
+  border: 1px solid #ffffff;
+  background: #ffffff9e;
+  backdrop-filter: blur(12px);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 60px #5064502e;
+
+  animation: appear 1.2s ease;
+
+  position: relative;
+  z-index: 2;
+}
+
+.tiny {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0 0 18px;
+
+  font-size: clamp(
+    2.2rem,
+    9vw,
+    4rem
+  );
+
+  color: #557b62;
+  line-height: 1.05;
+}
+
+.heart {
+  display: inline-block;
+  color: #e98ba9;
+
+  animation:
+    heartbeat 1.7s infinite;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+
+  margin: 0 auto 26px;
+  max-width: 410px;
+
+  color: #52675a;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+
+  padding: 13px 22px;
+
+  background: #e994ad;
+  color: white;
+
+  font-size: 1rem;
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px #d278963f;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #df7f9d;
+}
+
+#message {
+  display: none;
+
+  margin-top: 22px;
+  padding: 18px;
+
+  border-radius: 18px;
+
+  background: #dcefdcc4;
+
+  animation: appear 0.5s ease;
+}
+
+.flower {
+  position: absolute;
+  top: -30px;
+
+  font-size: 22px;
+  opacity: 0.7;
+
+  animation:
+    fall linear infinite;
+
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform:
+      translateY(115vh)
+      rotate(360deg);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform:
+      translateY(12px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.16);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="tiny">
+    a little reminder
+  </div>
+
+  <h1>
+    Proud of you, cii
+    <span class="heart">♡</span>
+  </h1>
+
+  <p>
+    Mungkin hari ini terasa biasa saja,
+    tapi jangan lupa kalau ada banyak hal
+    yang sudah cii lewati sampai sejauh ini.
+    Pelan-pelan aja.
+    Nggak harus selalu sempurna.
+  </p>
+
+  <button onclick="showMessage()">
+    A little message for you
+  </button>
+
+  <div id="message">
+
+    <strong>Hey, cii.</strong>
+
+    <br><br>
+
+    Apa pun yang sedang cii hadapi sekarang,
+    semoga cii tetap ingat kalau usaha cii berarti.
+
+    Take your time, keep going,
+    and be proud of yourself too. 🌷
+
+  </div>
+
+</div>
+
+
+<script>
+
+const flowers = [
+  "🌸",
+  "🌷",
+  "🌿",
+  "♡"
+];
+
+for (
+  let i = 0;
+  i < 18;
+  i++
+) {
+
+  const f =
+    document.createElement("div");
+
+  f.className = "flower";
+
+  f.textContent =
+    flowers[
+      Math.floor(
+        Math.random() *
+        flowers.length
+      )
+    ];
+
+  f.style.left =
+    Math.random() * 100 + "vw";
+
+  f.style.animationDuration =
+    7 + Math.random() * 8 + "s";
+
+  f.style.animationDelay =
+    -Math.random() * 10 + "s";
+
+  f.style.fontSize =
+    14 + Math.random() * 14 + "px";
+
+  document.body.appendChild(f);
+}
+
+
+function showMessage() {
+
+  const m =
+    document.getElementById(
+      "message"
+    );
+
+  m.style.display =
+    m.style.display === "block"
+      ? "none"
+      : "block";
+}
+
+</script>
+
+</body>
+</html>
